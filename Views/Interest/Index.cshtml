@@ -1,0 +1,34 @@
+﻿@model mvcdemo.Models.Interest
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Interest Calculation</title>
+</head>
+<body>
+    <h2>Interest Calculation</h2>
+    @using (Html.BeginForm()) 
+    {
+        @Html.AntiForgeryToken()
+        <div>Loan Amount </div>
+        @Html.TextBoxFor(model => model.Amount)
+        <p/>
+        <div>Interest Rate </div>
+        @Html.TextBoxFor(model => model.Rate)
+        <p/>
+        <input type="submit" value="Calculate" />
+    }
+
+    @if (Model.Result > 0)
+    {
+       <h3> Interest = @Model.Result</h3>
+    }
+
+</body>
+</html>

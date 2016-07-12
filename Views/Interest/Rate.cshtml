@@ -1,0 +1,35 @@
+﻿@model mvcdemo.Models.Interest
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Rate</title>
+</head>
+<body>
+    <h2>Interest Rate Finder</h2>
+    @using (Html.BeginForm())
+    {
+        <div>Period for Loan in Months </div>
+        @Html.TextBoxFor(model => Model.Period)
+        <span>&nbsp;</span>
+        @Html.ValidationMessageFor(model => Model.Period)
+        <p />
+        <input type="submit" value="Find Rate" />
+    }
+
+    @if (Model.Rate > 0)
+    {
+        <h3>Rate of Interst = @Model.Rate</h3>
+    }
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+</body>
+</html>

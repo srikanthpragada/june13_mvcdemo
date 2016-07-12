@@ -1,0 +1,9 @@
+# Libraries
+*.dll
+*.js
+
+# Generated files
+bin/
+obj/
+App_Data/
+
