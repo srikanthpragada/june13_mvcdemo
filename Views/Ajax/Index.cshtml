@@ -1,0 +1,51 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Ajax Demo</title>
+    <script>
+        function start() {
+            // alert("About to make ajax request....")
+            var ajaxnow = document.getElementById("ajaxnow");
+            alert(ajaxnow.getAttribute("data-ajax-update"));
+        }
+    </script>
+</head>
+<body>
+   <h2>Ajax Demo</h2>
+
+   @Ajax.ActionLink("System Date and Time", "Now", null,
+            new AjaxOptions
+            {
+                // OnBegin ="start()",
+                UpdateTargetId  = "datetime" ,
+                LoadingElementId ="now" },
+            new  { id = "ajaxnow"})
+   <p/>
+   <h3 id="datetime"></h3>
+
+   <h2>Search Names</h2>
+   @using(Ajax.BeginForm("Names", new AjaxOptions {  UpdateTargetId = "names"}))
+   {
+
+     <span>Search Pattern : </span> 
+     <input type="text" name="pattern" />  
+     <input type="submit" value="Search"/>
+     <p/>
+     <div id="names">
+
+     </div>
+
+   }
+
+   @Scripts.Render("~/bundles/jquery")
+   <script src='@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")'></script>
+
+</body>
+</html>
