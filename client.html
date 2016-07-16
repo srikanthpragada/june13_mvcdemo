@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Web API Client</title>
+	<meta charset="utf-8" />
+    <script src="Scripts/jquery-1.10.2.js"></script>
+    <script>
+        function getMessage()
+        {
+            $.getJSON("/api/messages/" + $("#msgid").val(), null, showResult);
+        }
+
+        function showResult(result)
+        {
+            $("#message").html(result);
+        }
+
+        function getAllMessages() {
+            $.getJSON("/api/messages", null, showAllMessages);
+        }
+
+        function showAllMessages(result) {
+            var output = "<ul>";
+            $.each(result,
+                    function (idx, message) {
+                        output += "<li>" + message + "</li>";
+                    }
+            );
+            output += "</ul>";
+            $("#messages").html(output);
+        }
+
+    </script>
+
+</head>
+<body>
+    <h2>Web API Client</h2>
+    Message Id : <input type="text" id="msgid" />
+    <button onclick="getMessage()">Get Message</button>
+    <h1 id="message"></h1>
+    <p/>
+    <button onclick="getAllMessages()">Get All Messages</button>
+    <div id="messages">
+
+    </div>
+    
+
+
+
+</body>
+</html>

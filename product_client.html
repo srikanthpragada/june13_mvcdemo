@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Web API Client</title>
+	<meta charset="utf-8" />
+    <script src="Scripts/jquery-1.10.2.js"></script>
+    <script>
+    
+        $(function ()
+          {
+            $.getJSON("/api/catalog", null, showResult);
+          }
+        );
+        function showResult(result) {
+            var output = "";
+            $.each(result,
+                    function (idx, product) {
+                        output += "<tr><td>" + product.Name + "</td><td>" + product.Price +
+                             "</td><td>" +  product.Qoh + "</td></tr>";
+                    }
+            );
+            
+            $("#body").html(output);
+        }
+
+    </script>
+
+</head>
+<body>
+    <h2>Catalog Client</h2>
+  
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Qoh</th>
+            </tr>
+        </thead>
+        <tbody id="body">
+
+        </tbody>
+    </table>
+
+    
+
+
+
+</body>
+</html>
