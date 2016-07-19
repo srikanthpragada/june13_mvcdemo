@@ -1,0 +1,32 @@
+﻿@model mvcdemo.Category
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit Category</title>
+</head>
+<body>
+    <h2>Edit Category</h2>
+    @using (Html.BeginForm())
+    {
+        <div>Category Code</div>
+        @Html.TextBoxFor(item => item.CatCode, new  { ReadOnly = "true" })
+        <p/>
+        <div>Category Description </div>
+        @Html.TextBoxFor( item => item.CatDesc)
+        <p/>
+        <input type="submit" value="Update" />
+
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>

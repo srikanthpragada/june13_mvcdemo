@@ -153,7 +153,29 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InterestController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Controllers\Product.cs">
+      <DependentUpon>Sales.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\Sale.cs">
+      <DependentUpon>Sales.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Sales.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sales.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Sales.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sales.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Sales.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sales.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -176,9 +198,20 @@
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Products.cs" />
+    <Compile Include="Models\SaleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Controllers\Sales.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Sales.edmx</DependentUpon>
+      <LastGenOutput>Sales.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Controllers\Sales.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Sales.edmx</DependentUpon>
+      <LastGenOutput>Sales.cs</LastGenOutput>
+    </Content>
     <Content Include="Inventory.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Inventory.edmx</DependentUpon>
@@ -205,6 +238,13 @@
     </EntityDeploy>
     <Content Include="Inventory.edmx.diagram">
       <DependentUpon>Inventory.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Controllers\Sales.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Sales.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Controllers\Sales.edmx.diagram">
+      <DependentUpon>Sales.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -245,6 +285,10 @@
     <Content Include="Views\Ajax\Names.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Categories\Edit.cshtml" />
+    <Content Include="Views\Categories\Search.cshtml" />
+    <Content Include="Views\Categories\SearchResult.cshtml" />
+    <Content Include="Views\Sales\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

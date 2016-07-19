@@ -11,7 +11,7 @@ namespace mvcdemo.Controllers
     public class CatalogController : ApiController
     {
 
-        public  List<Product> Get()
+        public  List<mvcdemo.Models.Product> Get()
         {
             return Products.GetProducts();
         }

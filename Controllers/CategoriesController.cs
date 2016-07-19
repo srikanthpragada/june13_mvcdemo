@@ -12,10 +12,9 @@ namespace mvcdemo.Controllers
         public ActionResult Index()
         {
             inventoryEntities ctx = new inventoryEntities(); // DbContext
-            var cats = ctx.Categories;   // DbSet<Category>
+            var cats = ctx.Categories.OrderBy(c => c.CatDesc);   // DbSet<Category>
             return View(cats);
         }
-
 
         public ActionResult Create()
         {
@@ -47,8 +46,8 @@ namespace mvcdemo.Controllers
             try
             {
                 inventoryEntities ctx = new inventoryEntities(); // DbContext
-                var category = ctx.Categories.Find(id);
-                ctx.Categories.Remove(category);
+                var category = ctx.Categories.Find(id); // SQL select 
+                ctx.Categories.Remove(category);  // SQL delete
                 ctx.SaveChanges();
                 TempData ["Message"] = "Deleted category [" + category.CatDesc + "] successfully!";
             }
@@ -57,6 +56,42 @@ namespace mvcdemo.Controllers
                TempData["Message"] = "Sorry! Unable to delete selected category! Error --> " + ex.Message ;     
             }
             return RedirectToAction("Index");
+        }
+
+
+        public ActionResult Edit(string id)
+        {
+           inventoryEntities ctx = new inventoryEntities(); // DbContext
+           var category = ctx.Categories.Find(id); // SQL select 
+           return View(category);
+
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Category cat)
+        {
+            inventoryEntities ctx = new inventoryEntities(); // DbContext
+            var category = ctx.Categories.Find(cat.CatCode); // SQL select 
+            category.CatDesc = cat.CatDesc;
+            ctx.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+        public ActionResult Search()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Search(string pattern)
+        {
+            inventoryEntities ctx = new inventoryEntities(); // DbContext
+            var cats = from cat in ctx.Categories
+                       where cat.CatCode.Contains(pattern) || cat.CatDesc.Contains(pattern)
+                       select cat;
+
+            return PartialView("SearchResult", cats);
         }
     }
 }

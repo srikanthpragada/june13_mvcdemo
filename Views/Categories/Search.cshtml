@@ -1,0 +1,33 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Search</title>
+</head>
+<body>
+    <h2>Search</h2>
+       
+
+    @using (Ajax.BeginForm( new AjaxOptions { UpdateTargetId = "result" }))
+    {
+        <input type="text" name="pattern" placeholder="Search string"/>
+        <input type="submit" value="Search" />
+        <p/>
+        <div id="result"></div>
+    }
+
+    @Scripts.Render("~/bundles/jquery")
+    <script src='@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")'></script>
+
+    <p/>
+    @Html.ActionLink("Home", "Index")
+    
+    
+</body>
+</html>
