@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Web API Client for Categories</title>
+	<meta charset="utf-8" />
+    <script src="Scripts/jquery-1.10.2.js"></script>
+    <script>
+        function deleteCategory() {
+            var url = "/api/Cat/" + $("#catcode").val();
+            $.ajax(
+            {
+                url: url,
+                type: "delete",
+                error: showError,
+                success: showSuccess
+            }
+           )
+        }
+
+        function showError() {
+            alert("Error!");
+        }
+
+        function showSuccess() {
+            alert("Success!");
+        }
+
+    </script>
+
+</head>
+<body>
+    <h2>Category Client</h2>
+    Category Code : <input type="text" id="catcode" />
+    <button onclick="deleteCategory()">Delete</button>
+    <h1 id="message"></h1>
+
+
+
+</body>
+</html>

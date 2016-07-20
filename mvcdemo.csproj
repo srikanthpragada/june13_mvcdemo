@@ -148,7 +148,9 @@
     </Compile>
     <Compile Include="Controllers\AjaxController.cs" />
     <Compile Include="Controllers\CatalogController.cs" />
+    <Compile Include="Controllers\CatController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\DBProductsController.cs" />
     <Compile Include="Controllers\HelloController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InterestController.cs" />
@@ -198,10 +200,12 @@
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Products.cs" />
+    <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\SaleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="cat_client.html" />
     <Content Include="Controllers\Sales.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Sales.edmx</DependentUpon>
@@ -289,6 +293,8 @@
     <Content Include="Views\Categories\Search.cshtml" />
     <Content Include="Views\Categories\SearchResult.cshtml" />
     <Content Include="Views\Sales\Index.cshtml" />
+    <Content Include="Views\DBProducts\Index.cshtml" />
+    <Content Include="Views\DBProducts\SalesReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

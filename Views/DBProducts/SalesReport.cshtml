@@ -1,0 +1,67 @@
+﻿@model IEnumerable<mvcdemo.Controllers.Product>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sales Report</title>
+    <style>
+        .invno {
+            width: 50px;
+            text-align: center;
+        }
+
+        .qty {
+            width: 50px;
+            text-align: center;
+        }
+
+        .amount {
+            width: 100px;
+            text-align: center;
+        }
+
+        .transdate {
+            width: 150px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Products Sales Report</h2>
+
+    @foreach (var product in Model)
+    {
+
+        <h3>
+            @product.ProdName
+            <br />
+            @product.Price.Value.ToString("c")
+        </h3>
+
+        if (product.Sales.Count == 0)
+        {
+            <h4>No sales data found!</h4>
+        }
+        else
+        {
+
+            <table border="1">
+                @foreach (var sale in product.Sales)
+                {
+                    <tr>
+                        <td class="invno">@sale.Invno</td>
+                        <td class="qty">@sale.Qty</td>
+                        <td class="amount">@sale.Amount.Value.ToString("c")</td>
+                        <td class="transdate">@sale.TransDate.Value.ToString("dd-MM-yyyy")</td>
+                    </tr>
+                }
+            </table>
+        }
+    }
+</body>
+</html>

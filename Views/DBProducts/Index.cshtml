@@ -1,0 +1,50 @@
+﻿@model IEnumerable<mvcdemo.Models.ProductViewModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List Of Products</title>
+    <style>
+        .table { width:100%; border : 1px }
+        .amount { text-align:right;}
+        .heading { background-color: navy; color:white; font-weight : bold}
+    </style>
+</head>
+<body>
+   <h2>List Of Products</h2>
+    <table class="table">
+        <tr class="heading">
+            <th>
+               Product Id  
+            </th>
+            <th>
+               Product Name
+            </th>
+            <th>
+              Total Sales
+            </th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td class="amount">
+                @(string.Format("{0:##,##0.00}",item.TotalSales.HasValue ? item.TotalSales : 0))
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
